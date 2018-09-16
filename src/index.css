@@ -14,6 +14,10 @@ th {
   margin: 20px 0px;
 }
 
+.search-bar .search-bar-input {
+  width: 60%;
+}
+
 svg {
   height: 150px;
 }
