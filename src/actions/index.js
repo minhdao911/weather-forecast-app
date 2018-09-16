@@ -8,7 +8,7 @@ export const REMOVE_WEATHER = "REMOVE_WEATHER";
 
 export function fetchWeather(city, country) {
   const url = `${ROOT_URL}&q=${city},${country}`;
-  const request = axios.get(url);
+  const request = axios.get(url).catch(err => `${city} not found!`);
 
   return {
     type: FETCH_WEATHER,
