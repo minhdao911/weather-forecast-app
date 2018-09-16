@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import { bindActionCreators } from "redux";
+import { removeWeather } from "../actions";
 
 import Chart from "../components/Chart";
 
@@ -23,7 +25,11 @@ class WeatherList extends Component {
             <Chart data={humidData} color="blue" unit="%" />
           </td>
           <td>
-            <button type="button" class="btn btn-primary">
+            <button
+              type="button"
+              className="btn btn-primary"
+              onClick={() => this.props.removeWeather(d)}
+            >
               Remove
             </button>
           </td>
@@ -56,4 +62,11 @@ function mapStateToProps({ weather }) {
   };
 }
 
-export default connect(mapStateToProps)(WeatherList);
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ removeWeather }, dispatch);
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(WeatherList);
